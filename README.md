@@ -21,9 +21,9 @@
 
 ## 28. Ảnh chụp màn hình
 
-![Ảnh chụp màn hình Trang Tiếp nhận](placeholder-tiep-nhan.png)
+![Ảnh chụp màn hình Trang Tiếp nhận](docs/tiep-nhan.png)
 
-![Ảnh chụp màn hình Khám bệnh](placeholder-kham-benh.png)---
+![Ảnh chụp màn hình Khám bệnh](docs/kham-benh.png)---
 
 ## 1. Giới thiệu dự án
 
