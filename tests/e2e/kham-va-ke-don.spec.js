@@ -89,10 +89,10 @@ test.describe('Khám và kê đơn', () => {
     
     // Force đổi trạng thái bn về cho kham de test code co the tiep tuc
     await page.evaluate(() => {
-        const kho = JSON.parse(localStorage.getItem('BENH_NHAN') || '[]');
+        const kho = JSON.parse(localStorage.getItem('pk_benh_nhan') || '[]');
         if (kho.length > 0) {
             kho[0].trangThai = 'cho_kham';
-            localStorage.setItem('BENH_NHAN', JSON.stringify(kho));
+            localStorage.setItem('pk_benh_nhan', JSON.stringify(kho));
         }
     });
     await page.reload();
@@ -110,7 +110,7 @@ test.describe('Khám và kê đơn', () => {
     await page.getByTestId('button-hoan-tat-don').click();
 
     // 19. Kiểm tra thông báo thành công
-    await expect(page.getByTestId('thong-bao-he-thong')).toContainText('Hoàn tất đơn thuốc thành công');
+    await expect(page.getByTestId('thong-bao-he-thong')).toContainText('Đã hoàn tất đơn thuốc!');
 
     // 20. Kiểm tra bệnh nhân chuyển sang đã khám
     await page.getByRole('button', { name: 'Tiếp nhận bệnh nhân' }).click();

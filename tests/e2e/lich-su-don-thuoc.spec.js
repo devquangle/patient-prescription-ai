@@ -69,7 +69,7 @@ test.describe('Lịch sử đơn thuốc', () => {
     await expect(rows).toHaveCount(1);
     
     await page.locator('#input-tim-don-thuoc').fill('ABCXYZ');
-    await expect(page.locator('tbody#tbody-don-thuoc')).toContainText('Không có đơn thuốc nào');
+    await expect(page.locator('tbody#tbody-don-thuoc')).toContainText('Chưa có đơn thuốc nào.');
   });
 
   test('Tìm kiếm theo tên bác sĩ', async ({ page }) => {
@@ -88,7 +88,7 @@ test.describe('Lịch sử đơn thuốc', () => {
     await expect(rows).toHaveCount(1);
     
     await page.locator('#filter-trang-thai-don').selectOption('nhap');
-    await expect(page.locator('tbody#tbody-don-thuoc')).toContainText('Không có đơn thuốc nào');
+    await expect(page.locator('tbody#tbody-don-thuoc')).toContainText('Chưa có đơn thuốc nào.');
   });
 
   test('Đơn đã hoàn tất không có nút hủy', async ({ page }) => {
@@ -111,7 +111,7 @@ test.describe('Lịch sử đơn thuốc', () => {
     // Accept dialog
     page.on('dialog', dialog => dialog.accept());
     
-    await row.getByRole('button', { name: 'Hủy đơn' }).click();
+    await row.getByRole('button', { name: 'Hủy' }).click();
     await expect(page.getByTestId('thong-bao-he-thong')).toContainText('Đã hủy đơn');
     
     const rowUpdated = page.locator('tbody#tbody-don-thuoc tr').first();

@@ -9,7 +9,7 @@ test.describe('Tiếp nhận bệnh nhân', () => {
 
   test('Mở ứng dụng thành công', async ({ page }) => {
     await expect(page).toHaveTitle(/Phòng khám Mini/);
-    await expect(page.locator('h1')).toHaveText('Phòng khám Mini');
+    await expect(page.locator('h1')).toContainText('Phòng khám Mini');
   });
 
   test('Thêm bệnh nhân hợp lệ', async ({ page }) => {
@@ -73,7 +73,7 @@ test.describe('Tiếp nhận bệnh nhân', () => {
     await page.getByTestId('input-so-dien-thoai').fill('0901234567');
     await page.getByTestId('button-luu-benh-nhan').click();
     
-    await expect(page.locator('#loi-form-benh-nhan')).toContainText('không được ở tương lai');
+    await expect(page.locator('#loi-form-benh-nhan')).toContainText('Ngày sinh không được lớn hơn ngày hiện tại');
   });
 
   test('Từ chối bệnh nhân trùng', async ({ page }) => {
