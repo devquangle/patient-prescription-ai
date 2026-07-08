@@ -1,0 +1,145 @@
+@page {
+  size: A4 portrait;
+  margin: 15mm;
+}
+
+/* Ẩn mọi thứ trên trang khi in */
+body * {
+  visibility: hidden;
+}
+
+/* Chỉ hiển thị khu vực modal in đơn thuốc */
+#vung-in-don-thuoc, #vung-in-don-thuoc * {
+  visibility: visible;
+}
+
+#vung-in-don-thuoc {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  color: #000;
+}
+
+/* Reset lại màu nền và font để tiết kiệm mực in */
+body {
+  background: none;
+  font-family: 'Times New Roman', Times, serif; /* Font chữ chuẩn dễ đọc khi in */
+  font-size: 13pt;
+  line-height: 1.5;
+  color: #000;
+}
+
+/* Header phòng khám */
+.print-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.print-header h2 {
+  font-size: 18pt;
+  margin-bottom: 5px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.print-header p {
+  margin: 3px 0;
+  font-size: 12pt;
+}
+
+.print-header hr {
+  margin-top: 15px;
+  border: 0;
+  border-top: 2px solid #000;
+}
+
+/* Thông tin đơn thuốc */
+.don-thuoc-info {
+  margin-bottom: 25px;
+}
+
+.don-thuoc-info h3 {
+  text-align: center;
+  font-size: 16pt;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.don-thuoc-info p {
+  margin-bottom: 8px;
+}
+
+/* Bảng danh sách thuốc */
+.print-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 25px;
+}
+
+.print-table th, .print-table td {
+  border: 1px solid #000;
+  padding: 8px 10px;
+  text-align: left;
+}
+
+/* Ép in màu nền nhạt cho Table Header */
+.print-table th {
+  background-color: #e9ecef !important;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+  font-weight: bold;
+}
+
+/* Chống tràn bảng sang trang mới không hợp lý */
+.don-thuoc-list {
+  page-break-inside: avoid;
+}
+tr {
+  page-break-inside: avoid;
+  page-break-after: auto;
+}
+
+/* Lời dặn và chữ ký */
+.don-thuoc-footer {
+  margin-top: 30px;
+  page-break-inside: avoid;
+}
+
+.signature {
+  float: right;
+  text-align: center;
+  width: 250px;
+  margin-top: 15px;
+}
+
+.signature p:last-child {
+  font-style: italic;
+  font-size: 11pt;
+  margin-top: 5px;
+  margin-bottom: 100px; /* Chừa không gian rộng để bác sĩ ký tên */
+}
+
+/* Đảm bảo ẩn các nút đóng, nút in và thanh tiêu đề modal */
+.modal-header, 
+.modal-footer, 
+#btn-dong-modal-don, 
+#btn-in-don {
+  display: none !important;
+}
+
+/* Reset lại cấu trúc của thẻ dialog để in full */
+dialog.modal {
+  position: static;
+  box-shadow: none;
+  border: none;
+  background: transparent;
+  width: 100%;
+  max-width: none;
+  display: block !important;
+}
+
+dialog::backdrop {
+  display: none;
+}
